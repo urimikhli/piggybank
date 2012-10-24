@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Game name:</b>
+  <%= @game.game_name %>
+</p>
+
+<p>
+  <b>Developer name:</b>
+  <%= @game.developer_name %>
+</p>
+
+<P> Score: <%= @rand_score %> </P>
+
+<p>
+  
+  link to 'bank your score' for great prizes
+
+  <%= link_to 'Bank Your Score', scores_path({:score=>@rand_score,:game_name=>@game.game_name}) %>
+
+</p>
+
+<%= link_to 'Back', games_path %>
