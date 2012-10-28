@@ -1,26 +1,20 @@
 <h1>scores</h1>
 
 <table>
-  <tr>
+  <tr align=left>
     <th>Game</th>
+    <th>Developer</th>
     <th>Score</th>
-    <th>date</th>
-    <th></th>
-    <th></th>
+    <th>Redeem</th>
   </tr>
 <% scr=0 %>
-<% @scores.each do |score| %>
-   <% scr += score.score %>
+<% @scores_by_game.each do |score| %>
+   <% scr += score.sum_score %>
   <tr>
     <td><%= score.game_name %></td>
-    <td><%= score.score %></td>
-    <td><%= score.updated_at %></td>
-    
-    <!--
-    <td><%= link_to 'Show', score %></td>
-    <td><%= link_to 'Edit', edit_score_path(score) %></td>
-    <td><%= link_to 'Destroy', score, :confirm => 'Are you sure?', :method => :delete %></td>
-    -->
+    <td><%= score.developer_name %></td>
+    <td><%= score.sum_score %></td>
+    <td>Redeem <%= link_to '500', scores_path({:redeem=>500,:affiliate=>'StarBucks'}) %> points: $5 StarBucks Gift card</td>      
   </tr>
 <% end %>
 </table>
@@ -49,10 +43,8 @@
 
 <P><b>Total points:</b> <%= scr - rdp %></P>
 
-
-
 <br />
 Redeem points
 <li><%= link_to '500', scores_path({:redeem=>500,:affiliate=>'StarBucks'}) %> points: $5 StarBucks Gift card</li>
-<li><%= link_to '100000', scores_path({:redeem=>100000,:affiliate=>'Macys'}) %> points: $50 Macy's Gift card</li>
+<li><%= link_to '1000', scores_path({:redeem=>1000,:affiliate=>'Nike'}) %> points: $10 Nikes Gift card</li> 
 

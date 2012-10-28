@@ -3,6 +3,7 @@ class ScoresController < ApplicationController
   # GET /scores.xml
   def index
     @scores = Score.all
+    @scores_by_game = Score.byGame
     @redemption = Redemption.all
     
     if params[:score].present? 
