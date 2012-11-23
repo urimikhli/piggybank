@@ -1,9 +1,15 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  affiliate: MyString
+  advertiser: MyString
+  redemption_type: MyString
+  game_name: MyString
+  developer_name: MyString
   amount: 1
 
 two:
-  affiliate: MyString
+  advertiser: MyString
+  redemption_type: MyString
+  game_name: MyString
+  developer_name: MyString
   amount: 1

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121024000744) do
+ActiveRecord::Schema.define(:version => 20121118011556) do
 
   create_table "games", :force => true do |t|
     t.string   "game_name"
@@ -21,7 +21,10 @@ ActiveRecord::Schema.define(:version => 20121024000744) do
   end
 
   create_table "redemptions", :force => true do |t|
-    t.string   "affiliate"
+    t.string   "advertiser"
+    t.string   "redemption_type"
+    t.string   "game_name"
+    t.string   "developer_name"
     t.integer  "amount"
     t.datetime "created_at"
     t.datetime "updated_at"

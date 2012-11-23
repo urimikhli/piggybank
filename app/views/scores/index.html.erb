@@ -1,5 +1,6 @@
 <h1>scores</h1>
 
+<h2><span><%= @announcment %></span></h2>
 <table>
   <tr align=left>
     <th>Game</th>
@@ -8,13 +9,35 @@
     <th>Redeem</th>
   </tr>
 <% scr=0 %>
+<% i=0 %>
 <% @scores_by_game.each do |score| %>
    <% scr += score.sum_score %>
+   <% sum_redeem=0 %>
+   <% sum_total=score.sum_score %>
+      <% @redemption_by_game.each do |redemptions| %>
+      
+         <%
+            if (redemptions.game_name == score.game_name)  
+              sum_redeem = redemptions.sum_amount
+              sum_total = score.sum_score - sum_redeem
+               #puts "redemption: #{redemptions.game_name}: | games: #{score.game_name} |score #{score.sum_score}| redeem: #{sum_redeem}| sum #{sum_total}<P>"
+              break
+            end
+          %>
+      <%end%>
   <tr>
     <td><%= score.game_name %></td>
     <td><%= score.developer_name %></td>
-    <td><%= score.sum_score %></td>
-    <td>Redeem <%= link_to '500', scores_path({:redeem=>500,:affiliate=>'StarBucks'}) %> points: $5 StarBucks Gift card</td>      
+    <td><%= sum_total %></td>
+    <td>Redeem
+    <% if sum_total >= 1000 %>
+       <%= link_to('1000', scores_path({:amount=>1000,:advertiser=>'Nike',:game_name=>score.game_name,:developer_name=>score.developer_name,:redemption_type=>'web'})) %> points get a  $10 Nike Gift card
+    <% elsif sum_total >= 500 %>
+       <%= link_to('500', scores_path({:amount=>500,:advertiser=>'StarBucks',:game_name=>score.game_name,:developer_name=>score.developer_name,:redemption_type=>'web'})) %> points get a $5 StarBucks Gift card
+    <%else%>
+      not enough points to redeem
+    <% end %>
+    </td>      
   </tr>
 <% end %>
 </table>
@@ -22,19 +45,19 @@
   
 <table>
   <tr>
-    <th>Affiliate</th>
+    <th>Advertiser</th>
+    <th>Game</th>
     <th>redeemed</th>
-    <th>date</th>
     <th></th>
     <th></th>
   </tr>
 <% rdp=0 %>
-<% @redemption.each do |redeemed| %>
-   <% rdp += redeemed.amount %>
+<% @redemption_by_adv.each do |redeemed| %>
+   <% rdp += redeemed.sum_amount %>
   <tr>
-    <td><%= redeemed.affiliate %></td>
-    <td><%= redeemed.amount %></td>
-    <td><%= redeemed.updated_at %></td>
+    <td><%= redeemed.advertiser %></td>
+    <td><%= redeemed.game_name %></td>
+    <td><%= redeemed.sum_amount %></td>
   </tr>
 <% end %>
 </table>
@@ -45,6 +68,6 @@
 
 <br />
 Redeem points
-<li><%= link_to '500', scores_path({:redeem=>500,:affiliate=>'StarBucks'}) %> points: $5 StarBucks Gift card</li>
-<li><%= link_to '1000', scores_path({:redeem=>1000,:affiliate=>'Nike'}) %> points: $10 Nikes Gift card</li> 
+<li> 500 points: $5 StarBucks Gift card</li>
+<li>1000 points: $10 Nike Gift card</li> 
 

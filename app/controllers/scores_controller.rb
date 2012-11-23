@@ -4,8 +4,8 @@ class ScoresController < ApplicationController
   def index
     @scores = Score.all
     @scores_by_game = Score.byGame
-    @redemption = Redemption.all
-    
+    @redemption_by_adv = Redemption.byGame
+    @redemption_by_game = Redemption.byGameNoAdv
     if params[:score].present? 
       @new_score = Score.new({:game_name=>params[:game_name],:score=>params[:score]})
       respond_to do |format|
@@ -13,8 +13,13 @@ class ScoresController < ApplicationController
           format.html { redirect_to(scores_url) }
         end
       end
-    else if params[:redeem].present?
-      @redeemed = Redemption.new({:amount=>params[:redeem],:affiliate=>params[:affiliate]})
+    else if params[:advertiser].present?
+        @announcment = "your gift card is on its way now"
+      @redeemed = Redemption.new({:amount=>params[:amount],
+                                   :advertiser=>params[:advertiser],
+                                   :game_name=>params[:game_name],
+                                   :developer_name=>params[:developer_name],
+                                   :redemption_type=>params[:redemption_type]})
       respond_to do |format|
         if @redeemed.save
           format.html { redirect_to(scores_url) }
