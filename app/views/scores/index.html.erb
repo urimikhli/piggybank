@@ -31,9 +31,9 @@
     <td><%= sum_total %></td>
     <td>
     <% if sum_total >= 1000 %>
-       Redeem <%= link_to('1000', scores_path({:amount=>1000,:advertiser=>'Nike',:game_name=>score.game_name,:developer_name=>score.developer_name,:redemption_type=>'web'})) %> points get a  $10 Nike Gift card
+       Redeem <%= link_to('1000', scores_path({:amount=>1000,:advertiser=>'Nike',:game_name=>score.game_name,:developer_name=>score.developer_name,:redemption_type=>'web'}),{:id =>'redeemPoints'}) %> points get a  $10 Nike Gift card
     <% elsif sum_total >= 500 %>
-       Redeem <%= link_to('500', scores_path({:amount=>500,:advertiser=>'StarBucks',:game_name=>score.game_name,:developer_name=>score.developer_name,:redemption_type=>'web'})) %> points get a $5 StarBucks Gift card
+       Redeem <%= link_to('500', scores_path({:amount=>500,:advertiser=>'StarBucks',:game_name=>score.game_name,:developer_name=>score.developer_name,:redemption_type=>'web'}),{:id =>'redeemPoints'}) %> points get a $5 StarBucks Gift card
     <%else%>
       not enough points to redeem
     <% end %>
