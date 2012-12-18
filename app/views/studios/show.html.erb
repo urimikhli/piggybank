@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Game name:</b>
+  <%= @studio.game_name %>
+</p>
+
+<p>
+  <b>Developer name:</b>
+  <%= @studio.developer_name %>
+</p>
+
+
+<%= link_to 'Edit', edit_studio_path(@studio) %> |
+<%= link_to 'Back', studios_path %>

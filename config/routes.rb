@@ -1,4 +1,8 @@
 PiggyBank::Application.routes.draw do
+  resources :advertisers
+
+  resources :studios
+
   resources :scores  
   resources :games
 

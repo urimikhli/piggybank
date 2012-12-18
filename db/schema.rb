@@ -10,7 +10,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121118011556) do
+ActiveRecord::Schema.define(:version => 20121216231621) do
+
+  create_table "advertisers", :force => true do |t|
+    t.string   "name"
+    t.float    "conversion_factor"
+    t.float    "dollar_amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "games", :force => true do |t|
     t.string   "game_name"
@@ -20,19 +28,16 @@ ActiveRecord::Schema.define(:version => 20121118011556) do
     t.datetime "updated_at"
   end
 
-  create_table "redemptions", :force => true do |t|
-    t.string   "advertiser"
-    t.string   "redemption_type"
+  create_table "scores", :force => true do |t|
     t.string   "game_name"
-    t.string   "developer_name"
-    t.integer  "amount"
+    t.integer  "score"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "scores", :force => true do |t|
+  create_table "studios", :force => true do |t|
     t.string   "game_name"
-    t.integer  "score"
+    t.string   "developer_name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

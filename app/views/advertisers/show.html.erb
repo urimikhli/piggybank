@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @advertiser.name %>
+</p>
+
+<p>
+  <b>Conversion factor:</b>
+  <%= @advertiser.conversion_factor %>
+</p>
+
+<p>
+  <b>Dollar amount:</b>
+  <%= @advertiser.dollar_amount %>
+</p>
+
+
+<%= link_to 'Edit', edit_advertiser_path(@advertiser) %> |
+<%= link_to 'Back', advertisers_path %>
