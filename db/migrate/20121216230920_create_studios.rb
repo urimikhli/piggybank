@@ -1,8 +1,7 @@
 class CreateStudios < ActiveRecord::Migration
   def self.up
     create_table :studios do |t|
-      t.string :game_name
-      t.string :developer_name
+      t.string :developer_name   
 
       t.timestamps
     end

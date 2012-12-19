@@ -28,6 +28,16 @@ ActiveRecord::Schema.define(:version => 20121216231621) do
     t.datetime "updated_at"
   end
 
+  create_table "redemptions", :force => true do |t|
+    t.string   "advertiser_name"
+    t.string   "redemption_type"
+    t.string   "game_name"
+    t.string   "developer_name"
+    t.integer  "amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "scores", :force => true do |t|
     t.string   "game_name"
     t.integer  "score"

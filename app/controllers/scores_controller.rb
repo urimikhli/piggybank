@@ -6,6 +6,7 @@ class ScoresController < ApplicationController
     @scores_by_game = Score.byGame
     @redemption_by_adv = Redemption.byGame
     @redemption_by_game = Redemption.byGameNoAdv
+    @adver = Advertiser.all
     if params[:score].present? 
       @new_score = Score.new({:game_name=>params[:game_name],:score=>params[:score]})
       respond_to do |format|
@@ -16,7 +17,7 @@ class ScoresController < ApplicationController
     else if params[:advertiser].present?
         @announcment = "your gift card is on its way now"
       @redeemed = Redemption.new({:amount=>params[:amount],
-                                   :advertiser=>params[:advertiser],
+                                   :advertiser_name=>params[:advertiser],
                                    :game_name=>params[:game_name],
                                    :developer_name=>params[:developer_name],
                                    :redemption_type=>params[:redemption_type]})

@@ -16,5 +16,27 @@
 </p>
 
 
+
+<table>
+  <tr>
+    <th>Advertiser</th>
+    <th>Game</th>
+    <th>redeemed</th>
+    <th></th>
+    <th></th>
+  </tr>
+<% rdp=0 %>
+<% @redemption_by_adv.each do |redeemed| %>
+   <% rdp += redeemed.sum_amount %>
+  <tr>
+    <td><%= redeemed.advertiser_name %></td>
+    <td><%= redeemed.game_name %></td>
+    <td><%= redeemed.sum_amount %></td>
+  </tr>
+<% end %>
+</table>
+
+
+
 <%= link_to 'Edit', edit_advertiser_path(@advertiser) %> |
 <%= link_to 'Back', advertisers_path %>

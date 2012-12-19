@@ -14,7 +14,8 @@ class AdvertisersController < ApplicationController
   # GET /advertisers/1.xml
   def show
     @advertiser = Advertiser.find(params[:id])
-
+    @redemption_by_adv = Redemption.byGameByAdv
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @advertiser }
