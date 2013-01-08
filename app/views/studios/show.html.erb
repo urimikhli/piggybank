@@ -1,15 +1,32 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Game name:</b>
-  <%= @studio.game_name %>
-</p>
 
 <p>
-  <b>Developer name:</b>
-  <%= @studio.developer_name %>
+  <b>Studio name:</b>
+  <%= @studio.name %>
 </p>
 
+<p>Games by play</p>
 
+<P></P>
+<p>Redemptions</p>
+<table>
+  <tr>
+    <th>Advertiser</th>
+    <th>Game</th>
+    <th>redeemed</th>
+    <th></th>
+    <th></th>
+  </tr>
+<% rdp=0 %>
+<% @redemption_by_adv.each do |redeemed| %>
+   <% rdp += redeemed.sum_amount %>
+  <tr>
+    <td><%= redeemed.advertiser_name %></td>
+    <td><%= redeemed.game_name %></td>
+    <td><%= redeemed.sum_amount %></td>
+  </tr>
+<% end %>
+</table>
 <%= link_to 'Edit', edit_studio_path(@studio) %> |
 <%= link_to 'Back', studios_path %>

@@ -1,10 +1,13 @@
 PiggyBank::Application.routes.draw do
+  devise_for :users
+
   resources :advertisers
 
   resources :studios
 
   resources :scores  
   resources :games
+  root :to => 'home#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,14 +1,21 @@
 class ScoresController < ApplicationController
+  
+  #before_filter :authenticate_user!, except: [:index, :show]
+  before_filter :authenticate_user!
+  
   # GET /scores
   # GET /scores.xml
   def index
     @scores = Score.all
-    @scores_by_game = Score.byGame
+    #@scores_by_game = Score.byGame
+    @scores_by_game = Score.byUser(current_user.id)
+
     @redemption_by_adv = Redemption.byGame
     @redemption_by_game = Redemption.byGameNoAdv
     @adver = Advertiser.all
-    if params[:score].present? 
-      @new_score = Score.new({:game_name=>params[:game_name],:score=>params[:score]})
+    if params[:score].present?
+      @scoring_user = User.getIdByemail(current_user.email).first
+      @new_score = Score.new({:game_name=>params[:game_name],:score=>params[:score],:user_id =>@scoring_user.user_id })
       respond_to do |format|
         if @new_score.save
           format.html { redirect_to(scores_url) }
@@ -19,7 +26,7 @@ class ScoresController < ApplicationController
       @redeemed = Redemption.new({:amount=>params[:amount],
                                    :advertiser_name=>params[:advertiser],
                                    :game_name=>params[:game_name],
-                                   :developer_name=>params[:developer_name],
+                                   :developer_name=>params[:studio_name],
                                    :redemption_type=>params[:redemption_type]})
       respond_to do |format|
         if @redeemed.save

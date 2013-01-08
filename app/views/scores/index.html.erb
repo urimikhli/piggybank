@@ -1,4 +1,4 @@
-<h1>scores</h1>
+<h1>My Scores</h1>
 
 <h2><span><%= @announcment %></span></h2>
 <table>
@@ -27,7 +27,7 @@
       <%end%>
   <tr>
     <td><%= score.game_name %></td>
-    <td><%= score.developer_name %></td>
+    <td><%= score.studio_name %></td>
     <td><%= sum_total %></td>
     <td>
       <% @adver.each do |advertiser| %>
@@ -39,10 +39,10 @@
                       
           <% if sum_total <= 1000 && sum_total >= 500 && redemption_amount <= 500 %>
           
-                Redeem <%= link_to('500', scores_path({:amount=>500,:advertiser=>"#{advertiser.name}",:game_name=>score.game_name,:developer_name=>score.developer_name,:redemption_type=>'web'}),{:id =>'redeemPoints'}) %> points get a $10 <%= "#{advertiser.name} " %> gift card
+                Redeem <%= link_to('500', scores_path({:amount=>500,:advertiser=>"#{advertiser.name}",:game_name=>score.game_name,:studio_name=>score.studio_name,:redemption_type=>'web'}),{:id =>'redeemPoints'}) %> points get a $10 <%= "#{advertiser.name} " %> gift card
                 <%break%>
           <% elsif sum_total >= 1000 && redemption_amount >= 501 && redemption_amount <= 1000 %>
-                Redeem <%= link_to('1000', scores_path({:amount=>1000,:advertiser=>"#{advertiser.name}",:game_name=>score.game_name,:developer_name=>score.developer_name,:redemption_type=>'web'}),{:id =>'redeemPoints'}) %> points get a $5 <%= "#{advertiser.name} " %> Gift card
+                Redeem <%= link_to('1000', scores_path({:amount=>1000,:advertiser=>"#{advertiser.name}",:game_name=>score.game_name,:studio_name=>score.studio_name,:redemption_type=>'web'}),{:id =>'redeemPoints'}) %> points get a $5 <%= "#{advertiser.name} " %> Gift card
                 <%break%>
           <% end %>
     

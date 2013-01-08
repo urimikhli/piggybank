@@ -12,12 +12,12 @@
 <% @games.each do |game| %>
   <tr>
     <td><%= game.game_name %></td>
-    <td><%= game.developer_name %></td>
+    <td><%= game.studio_id %></td>
     <td><%= link_to 'Top score', game %></td>
-    <!--
+    
     <td><%= link_to 'Edit', edit_game_path(game) %></td>
     <td><%= link_to 'Destroy', game, :confirm => 'Are you sure?', :method => :delete %></td>
-    -->
+    
   </tr>
 <% end %>
 </table>

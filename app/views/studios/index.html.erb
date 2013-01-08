@@ -2,7 +2,6 @@
 
 <table>
   <tr>
-    <th>Game name</th>
     <th>Developer name</th>
     <th></th>
     <th></th>
@@ -11,8 +10,7 @@
 
 <% @studios.each do |studio| %>
   <tr>
-    <td><%= studio.game_name %></td>
-    <td><%= studio.developer_name %></td>
+    <td><%= studio.name %></td>
     <td><%= link_to 'Show', studio %></td>
     <td><%= link_to 'Edit', edit_studio_path(studio) %></td>
     <td><%= link_to 'Destroy', studio, :confirm => 'Are you sure?', :method => :delete %></td>

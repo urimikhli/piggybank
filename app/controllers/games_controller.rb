@@ -3,7 +3,7 @@ class GamesController < ApplicationController
   # GET /games.xml
   def index
     @games = Game.all
-
+    @studios = Studio.all
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @games }
@@ -27,7 +27,8 @@ class GamesController < ApplicationController
   # GET /games/new.xml
   def new
     @game = Game.new
-
+    #@studios = Studio.getStudios
+    @studios = Studio.all
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @game }
@@ -37,13 +38,16 @@ class GamesController < ApplicationController
   # GET /games/1/edit
   def edit
     @game = Game.find(params[:id])
+    @studios = Studio.all
   end
 
   # POST /games
   # POST /games.xml
   def create
     @game = Game.new(params[:game])
-
+    @studios = Studio.all
+    
+    #@game.studio_name = Studio.getSingleStudioNameById(params[:studio_id])
     respond_to do |format|
       if @game.save
         format.html { redirect_to(@game, :notice => 'Game was successfully created.') }
@@ -59,7 +63,7 @@ class GamesController < ApplicationController
   # PUT /games/1.xml
   def update
     @game = Game.find(params[:id])
-
+    @studios = Studio.all
     respond_to do |format|
       if @game.update_attributes(params[:game])
         format.html { redirect_to(@game, :notice => 'Game was successfully updated.') }

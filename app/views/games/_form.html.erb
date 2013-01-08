@@ -15,14 +15,12 @@
     <%= f.label :game_name %><br />
     <%= f.text_field :game_name %>
   </div>
+  
   <div class="field">
-    <%= f.label :developer_id %><br />
-    <%= f.text_field :developer_id %>
+    <%= f.label :studio_name %><br />
+    <%= f.collection_select(:studio_id, @studios, :id, :name, :include_blank => "Please select")%>
   </div>
-  <div class="field">
-    <%= f.label :developer_name %><br />
-    <%= f.text_field :developer_name %>
-  </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>
