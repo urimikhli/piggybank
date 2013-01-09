@@ -9,7 +9,7 @@ class ScoresController < ApplicationController
     @scores = Score.all
     #@scores_by_game = Score.byGame
     @scores_by_game = Score.byUser(current_user.id)
-
+    @developers = Studio.all
     @redemption_by_adv = Redemption.byGame
     @redemption_by_game = Redemption.byGameNoAdv
     @adver = Advertiser.all
