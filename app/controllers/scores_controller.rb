@@ -10,8 +10,8 @@ class ScoresController < ApplicationController
     #@scores_by_game = Score.byGame
     @scores_by_game = Score.byUser(current_user.id)
     @developers = Studio.all
-    @redemption_by_adv = Redemption.byGame
-    @redemption_by_game = Redemption.byGameNoAdv
+    @redemption_by_adv = Redemption.byGameByUserId(current_user.id)
+    @redemption_by_game = Redemption.byGameNoAdvByUserId(current_user.id)
     @adver = Advertiser.all
     if params[:score].present?
       @scoring_user = User.getIdByemail(current_user.email).first
@@ -23,7 +23,8 @@ class ScoresController < ApplicationController
       end
     else if params[:advertiser].present?
         @announcment = "your gift card is on its way now"
-      @redeemed = Redemption.new({:amount=>params[:amount],
+      @redeemed = Redemption.new({:user_id=>current_user.id,
+                                   :amount=>params[:amount],
                                    :advertiser_name=>params[:advertiser],
                                    :game_name=>params[:game_name],
                                    :developer_name=>params[:studio_name],
