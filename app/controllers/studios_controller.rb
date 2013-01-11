@@ -14,7 +14,8 @@ class StudiosController < ApplicationController
   # GET /studios/1.xml
   def show
     @studio = Studio.find(params[:id])
-    @redemption_by_adv = Redemption.byGame
+    @studios = Studio.all
+    @redemption_by_adv = Redemption.byGameByStudioName(@studio.name)
     @redemption_by_game = Redemption.byGameNoAdv
     
     respond_to do |format|

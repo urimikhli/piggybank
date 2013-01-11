@@ -16,7 +16,7 @@ class AdvertisersController < ApplicationController
     @advertiser = Advertiser.find(params[:id])
     #@redemption_by_adv = Redemption.byGameByAdv
     
-    @redemption_by_adv = Redemption.byGameByAdvId(@advertiser.name)
+    @redemption_by_adv = Redemption.byGameByAdvName(@advertiser.name)
     
     respond_to do |format|
       format.html # show.html.erb
