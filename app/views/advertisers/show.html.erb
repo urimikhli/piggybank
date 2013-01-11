@@ -19,7 +19,7 @@
 <p>Redemptions</p>
 <table>
   <tr>
-    <th>Advertiser</th>
+    <th>developer</th>
     <th>Game</th>
     <th>redeemed</th>
     <th></th>
@@ -29,9 +29,11 @@
 <% @redemption_by_adv.each do |redeemed| %>
    <% rdp += redeemed.sum_amount %>
   <tr>
-    <td><%= redeemed.advertiser_name %></td>
+    <td><%= redeemed.developer_name %></td>
     <td><%= redeemed.game_name %></td>
     <td><%= redeemed.sum_amount %></td>
+    <td></td>
+    <td><%= redeemed.advertiser_name %></td>
   </tr>
 <% end %>
 </table>

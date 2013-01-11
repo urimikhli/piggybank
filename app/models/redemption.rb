@@ -14,7 +14,8 @@ class Redemption < ActiveRecord::Base
    end
    
    #############
-   
+   #by user
+   ########   
    def self.byGameByUserId(id=0)
     Redemption.select("redemptions.advertiser_name,redemptions.developer_name,redemptions.game_name, sum(redemptions.amount) as sum_amount").where('redemptions.user_id=?',id).group('redemptions.advertiser_name,redemptions.developer_name,redemptions.game_name')
    end
@@ -25,5 +26,12 @@ class Redemption < ActiveRecord::Base
    
    def self.byGameByAdvByUserId(id=0)
     Redemption.select("redemptions.advertiser_name,redemptions.developer_name,redemptions.game_name, sum(redemptions.amount) as sum_amount").where('redemptions.user_id=?',id).group('redemptions.advertiser_name,redemptions.developer_name,redemptions.game_name')
+   end
+   
+   ########
+   #by advertiser
+   #########
+   def self.byGameByAdvId(adv_name="")
+    Redemption.select("redemptions.advertiser_name,redemptions.developer_name,redemptions.game_name, sum(redemptions.amount) as sum_amount").where('redemptions.advertiser_name=?',adv_name).group('redemptions.advertiser_name,redemptions.developer_name,redemptions.game_name')
    end
 end
