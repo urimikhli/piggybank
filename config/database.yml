@@ -55,7 +55,7 @@ production:
   reconnect: false
   database: piggy_production
   pool: 5
-  host: 127.0.0.1
+  host:  mysql2://be5a6b9711aecd:6d0c7667@us-cdbr-east-03.cleardb.com/heroku_e04c6394aada800?reconnect=true
   username: root
   password: password
 # socket: /tmp/mysql.sock
